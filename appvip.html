@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CyberSens VIP - Free Fire Sensitivity AI</title>
+    <style>
+        :root {
+            --bg: #0b0f19;
+            --card: rgba(20, 27, 45, 0.95);
+            --cyan: #06b6d4;
+            --purple: #a855f7;
+            --yellow: #f59e0b;
+            --green: #10b981;
+            --text: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg);
+            background-image: radial-gradient(at 50% 0%, rgba(168, 85, 247, 0.2) 0px, transparent 75%);
+            color: var(--text);
+            padding: 12px;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .app-container {
+            width: 100%;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .header-app {
+            text-align: center;
+            padding: 12px;
+            background: var(--card);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(6, 182, 212, 0.2);
+        }
+
+        .header-app h1 {
+            color: var(--cyan);
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+            text-shadow: 0 0 8px rgba(6, 182, 212, 0.6);
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 14px;
+        }
+
+        .card-title {
+            font-size: 0.85rem;
+            color: var(--purple);
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .input-box {
+            margin-bottom: 10px;
+        }
+
+        .input-box label {
+            display: block;
+            font-size: 0.75rem;
+            color: #94a3b8;
+            margin-bottom: 4px;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px;
+            background: #030712;
+            border: 1px solid var(--purple);
+            color: #d8b4fe;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            outline: none;
+        }
+
+        .btn-act {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #7e22ce, #06b6d4);
+            border: none;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9rem;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 0 12px rgba(168, 85, 247, 0.4);
+            touch-action: manipulation;
+        }
+
+        .btn-act:active {
+            transform: scale(0.98);
+        }
+
+        .grid-res {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .box-res {
+            background: #030712;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .box-title {
+            font-size: 0.68rem;
+            color: #64748b;
+        }
+
+        .box-val {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--green);
+            font-family: monospace;
+        }
+
+        .list-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .list-table td {
+            padding: 8px 4px;
+            font-size: 0.82rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .list-table td:last-child {
+            text-align: right;
+            color: var(--cyan);
+            font-weight: bold;
+            font-family: monospace;
+            font-size: 0.95rem;
+        }
+
+        .seed-code {
+            font-size: 0.7rem;
+            color: var(--yellow);
+            text-align: center;
+            margin-top: 8px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        <div class="header-app">
+            <h1>🔥 CYBERSENS VIP PRO</h1>
+            <p style="font-size:0.7rem; color:#94a3b8;">Tạo Thông Số Độ Nhạy Vô Hạn (Scale 100 - 200)</p>
+        </div>
+
+        <div class="card">
+            <div class="card-title">1. Chọn Lỗi Kéo Tâm</div>
+            <div class="input-box">
+                <label>Gặp vấn đề gì khi bắn?</label>
+                <select id="errSelect">
+                    <option value="chest">Dính Ngực (Kéo hoài không lên headshot)</option>
+                    <option value="head">Vọt Đầu (Vuốt nhẹ tâm văng khỏi đầu)</option>
+                    <option value="shake">Rung Scope (Bật 2X/4X bị lắc tâm)</option>
+                    <option value="shotgun">Khó One-Tap Shotgun / M1887</option>
+                </select>
+            </div>
+            <button class="btn-act" id="btnGenerate">⚡ KÍCH HOẠT TẠO ĐỘ NHẠY MỚI</button>
+        </div>
+
+        <div class="card">
+            <div class="card-title">2. Thông Số Nhận Được</div>
+            
+            <div class="grid-res">
+                <div class="box-res">
+                    <div class="box-title">NÚT BẮN</div>
+                    <div class="box-val" id="vBtn" style="color:var(--yellow);">42%</div>
+                </div>
+                <div class="box-res">
+                    <div class="box-title">DPI GỢI Ý</div>
+                    <div class="box-val" id="vDpi" style="font-size:0.9rem; color:var(--purple); line-height:1.5rem;">420 DPI</div>
+                </div>
+            </div>
+
+            <table class="list-table">
+                <tr><td>Nhìn xung quanh:</td><td id="vGen">185 / 200</td></tr>
+                <tr><td>Red Dot Sight:</td><td id="vRed">172 / 200</td></tr>
+                <tr><td>Ống ngắm 2X:</td><td id="v2x">164 / 200</td></tr>
+                <tr><td>Ống ngắm 4X:</td><td id="v4x">148 / 200</td></tr>
+                <tr><td>Ống ngắm AWM:</td><td id="vSnip">115 / 200</td></tr>
+                <tr><td>Góc nhìn tự do:</td><td id="vFree">135 / 200</td></tr>
+            </table>
+
+            <div class="seed-code" id="vSeed">Mã bộ số: #SENS-00000000</div>
+        </div>
+    </div>
+
+    <script>
+        function rand(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function compute() {
+            const err = document.getElementById('errSelect').value;
+            
+            let gMin = 130, gMax = 200;
+            let rMin = 120, rMax = 200;
+            let bMin = 38,  bMax = 48;
+
+            if (err === 'chest') { gMin = 168; rMin = 160; bMin = 36; bMax = 42; }
+            else if (err === 'head') { gMin = 100; gMax = 150; rMin = 100; rMax = 145; bMin = 45; bMax = 52; }
+            else if (err === 'shotgun') { gMin = 175; bMin = 35; bMax = 40; }
+
+            document.getElementById('vGen').innerText = rand(gMin, gMax) + " / 200";
+            document.getElementById('vRed').innerText = rand(rMin, rMax) + " / 200";
+            document.getElementById('v2x').innerText  = rand(110, 190) + " / 200";
+            document.getElementById('v4x').innerText  = rand(100, 180) + " / 200";
+            document.getElementById('vSnip').innerText = rand(100, 150) + " / 200";
+            document.getElementById('vFree').innerText = rand(100, 160) + " / 200";
+            document.getElementById('vBtn').innerText  = rand(bMin, bMax) + "%";
+            document.getElementById('vDpi').innerText  = rand(410, 480) + " DPI";
+            document.getElementById('vSeed').innerText = "#SENS-" + rand(10000000, 99999999);
+        }
+
+        document.getElementById('btnGenerate').addEventListener('click', compute);
+        compute();
+    </script>
+</body>
+</html>
